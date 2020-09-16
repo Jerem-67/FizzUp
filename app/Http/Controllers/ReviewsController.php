@@ -32,13 +32,20 @@ class ReviewsController extends BaseController
             'email' => 'bail|required|email',
             'content' => 'bail|required|max:500'
         ]);
-
+        dump($request->file('fileName'));
+        dump($request->fileName->extension());
         $review = new Reviews;
+        if (!empty($request->fileName)) {
+            $fileName = uniqid() . '.'. $request->fileName->extension();
+            $request->fileName->move(public_path('uploads'), $fileName);
+            $review->fileName = $fileName;
+        }
+
         $review->email = $request->email;
         $review->name = $request->name;
         $review->rate = $request->rate;
         $review->content = $request->content;
         $review->save();
-        return redirect()->route('reviews.index');
+        return redirect()->route('reviews.index')->with('success', 'Votre commentaire à bien été transmis');
     }
 }
