@@ -30,6 +30,8 @@ class ReviewsController extends BaseController
     {
         $this->validate($request, [
             'email' => 'bail|required|email',
+            'name' => 'bail|required',
+            'rate' => 'bail|required',
             'content' => 'bail|required|max:500'
         ]);
         dump($request->file('fileName'));
