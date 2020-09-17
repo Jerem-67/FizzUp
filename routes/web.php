@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReviewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ReviewsController::class, 'index'])->name('reviews.index');
+Route::get('/asc', [ReviewsController::class, 'indexAsc'])->name('reviews.indexAsc');
+Route::get('/asc/rate/{stars}', [ReviewsController::class, 'rateAsc'])->name('reviews.rateAsc');
+Route::get('/rate/{stars}', [ReviewsController::class, 'rateDesc'])->name('reviews.rateDesc');
+Route::get('/show/{id}', [ReviewsController::class, 'show'])->name('reviews.show');
+Route::get('/new_review', [ReviewsController::class, 'create'])->name('reviews.create');
+Route::post('/new_review', [ReviewsController::class, 'store'])->name('reviews.store');
