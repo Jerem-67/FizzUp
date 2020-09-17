@@ -1,6 +1,7 @@
-body{
-    color: red;
-}
 .JK-logoNav{
-    background-image: url(https://cdn.fizzup.com/full/landing_01/images/logowhite_v2.png);
+    background-image: url(https://cdn.fizzup.com/full/landing_01/images/logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 38px;
+    width: 113px;
 }
