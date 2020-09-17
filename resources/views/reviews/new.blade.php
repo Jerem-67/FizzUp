@@ -34,7 +34,7 @@
     </div>
 @stop
 @section('script')
-<script src="//cdn.ckeditor.com/4.15.0/basic/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace( 'content' );
 </script>
