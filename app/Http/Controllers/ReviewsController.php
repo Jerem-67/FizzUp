@@ -10,6 +10,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ReviewsController extends BaseController
 {
@@ -19,6 +20,7 @@ class ReviewsController extends BaseController
     {
         $reviews =  Reviews::orderBy('created_at', 'desc')->get();
         $files = DB::table('uploads')->get();
+
         return view('reviews.index', [
             'reviews' => $reviews,
             'files' => $files
@@ -66,31 +68,43 @@ class ReviewsController extends BaseController
 
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $messages  = [
+            'required'  => 'Ce champ est obligatoire',
+            'mimes'    => 'Le fichier doit être au format png, jpeg ou gif',
+        ];
+        $validator = Validator::make($request->all(), [
             'email' => 'bail|required|email',
             'name' => 'bail|required',
             'rate' => 'bail|required',
-            'content' => 'bail|required|max:500'
-        ]);
-        $review = new Reviews;
+            'content' => 'bail|required|max:500',
+            'uploads.*' => 'mimes:png,jpeg,gif'
+            ],
+            $messages);
 
-        $review->email = $request->email;
-        $review->name = $request->name;
-        $review->rate = $request->rate;
-        $review->content = $request->content;
-        $review->save();
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        } else {
+            $review = new Reviews;
 
-        if (!empty($request->uploads)) {
-            foreach ($request->uploads as $fileUp) {
-                $upload = new Upload;
-                $fileName = uniqid() . '.'. $fileUp->extension();
-                $fileUp->move(public_path('uploads'), $fileName);
-                $upload->fileName = $fileName;
-                $upload->reviews_id = $review->id;
-                $upload->save();
+            $review->email = $request->email;
+            $review->name = $request->name;
+            $review->rate = $request->rate;
+            $review->content = $request->content;
+            $review->save();
+
+            if (!empty($request->uploads)) {
+                foreach ($request->uploads as $fileUp) {
+                    $upload = new Upload;
+                    $fileName = uniqid() . '.'. $fileUp->extension();
+                    $fileUp->move(public_path('uploads'), $fileName);
+                    $upload->fileName = $fileName;
+                    $upload->reviews_id = $review->id;
+                    $upload->save();
+                }
             }
+            return redirect()->route('reviews.index')->with('success', 'Votre commentaire a bien été transmis');
         }
-        return redirect()->route('reviews.index')->with('success', 'Votre commentaire à bien été transmis');
+
     }
 
     public function show($id)
