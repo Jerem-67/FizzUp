@@ -19,7 +19,13 @@ class Reviews extends Migration
             $table->string('email');
             $table->integer('rate');
             $table->text('content');
-            $table->string('fileName')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('uploads', function (Blueprint $table) {
+            $table->id();
+            $table->string('fileName');
+            $table->integer('reviews_id');
             $table->timestamps();
         });
     }

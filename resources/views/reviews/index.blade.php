@@ -64,11 +64,14 @@
                                     <h5>Note: {{ $review->rate }}/5</h5>
                                     <p class="card-text">{{ $review->content }}</p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        @if($review->fileName)
-                                            <div class="btn-group">
-                                                <a href="{{ URL::route('reviews.show', $review->id) }}" class="btn btn-sm btn-outline-secondary" target="_blank">Photo(s) de l'utilisateur</a>
-                                            </div>
-                                        @endif
+                                        @foreach($files as $file)
+                                            @if($file->reviews_id == $review->id)
+                                                <div class="btn-group">
+                                                    <a href="{{ URL::route('reviews.show', $review->id) }}" class="btn btn-sm btn-outline-secondary" target="_blank">Photo(s) de l'utilisateur</a>
+                                                </div>
+                                                @break
+                                            @endif
+                                        @endforeach
                                         <small class="text-muted">{{$review->created_at}}</small>
                                     </div>
                                 </div>
