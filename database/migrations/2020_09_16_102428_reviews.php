@@ -19,7 +19,7 @@ class Reviews extends Migration
             $table->string('email');
             $table->integer('rate');
             $table->text('content');
-            $table->string('fileName');
+            $table->string('fileName')->nullable();
             $table->timestamps();
         });
     }
