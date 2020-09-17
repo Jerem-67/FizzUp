@@ -22,7 +22,7 @@
             <div class="form-group">
                 <textarea class="form-control" id="content" name="content" rows="3" placeholder="Votre Commentaire"></textarea>
             </div>
-            <input type="file" name="fileName" class="form-control">
+            <input type="file" name="uploads[]" multiple class="form-control">
             <button type="submit" class="btn btn-primary">Poster l'avis</button>
         </form>
     </div>

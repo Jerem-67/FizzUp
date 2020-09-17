@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Reviews extends Model
+class Upload extends Model
 {
     use HasFactory, Notifiable;
 
@@ -16,12 +16,7 @@ class Reviews extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'rate', 'content', 'fileName'
+        'fileName', 'reviews_id'
     ];
-
-    public function uploads()
-    {
-        return$this->hasMany('App\Models\Upload', 'reviews');
-    }
 
 }
