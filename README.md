@@ -1,4 +1,4 @@
-![FizzUp](./public/favicon/apple-touch-icon.png)
+![FizzUp](https://cdn.fizzup.com/full/landing_01/images/logowhite_v2.png)
  
 # Summary: 
 
@@ -16,6 +16,7 @@
 
 - [PHP 7.4](https://www.php.net/)
 - [Laravel](https://laravel.com/)
+- [CKEditor 4](https://ckeditor.com/ckeditor-4/)
 
 ## Configuration
 
@@ -82,13 +83,9 @@ Shut down your app with `ctrl + c`
 
 ## Hierarchy
 
-There is 4 level of hierarchy on this app:
-- Level 1 : **Anonymous** :  user who is not connected and just navigate in the front pages.
-- Level 2 : **Student** (ROLE_STUDENT) : the student can manage his own resume.
-- Level 3 : **School** (ROLE_SCHOOL) : the school can manage and create students (limited).
-- Level 4 : **School Editor** (ROLE_SCHOOL_EDITOR) : the school editor have all access to the management.
-- Level 5 : **Admin** (ROLE_ADMIN) : the admin can manage and create the schools.
-- Level 6 : **Super Admin** (ROLE_SUPER_ADMIN) : the super admin can manage and create the admins.
+This is the list of hierarchy on this app.
+
+- ...
 
 
 ## ToDo
