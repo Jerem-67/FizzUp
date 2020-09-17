@@ -1,4 +1,4 @@
-![FizzUp](https://cdn.fizzup.com/full/landing_01/images/logowhite_v2.png)
+![FizzUp](https://app.fizzup.com/media2/images/logo_header_web.png)
  
 # Summary: 
 
