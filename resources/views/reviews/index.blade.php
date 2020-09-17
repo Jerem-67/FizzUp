@@ -62,7 +62,7 @@
                                 <div class="card-body">
                                     <h4>Comentaire de {{ $review->name }}:</h4>
                                     <h5>Note: {{ $review->rate }}/5</h5>
-                                    <p class="card-text">{{ $review->content }}</p>
+                                    <p class="card-text">{!! $review->content !!}</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         @foreach($files as $file)
                                             @if($file->reviews_id == $review->id)

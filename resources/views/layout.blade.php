@@ -80,5 +80,6 @@
         <script src="https://getbootstrap.com/docs/4.5/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf"
                 crossorigin="anonymous"></script>
+        @yield('script')
     </body>
 </html>
